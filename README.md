@@ -1,1 +1,1 @@
-This is the repo for system engineering devops projects at Holberton School..
+Repo for Holberton's project on system engineering devops
