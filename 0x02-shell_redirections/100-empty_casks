@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -laR | grep -e ^- -e ^d | tr -s ' ' | cut -f 5,9 -d ' ' | grep -e ^0 | cut -f 2 -d ' '
+find . -empty -print | rev | cut -f 1 -d '/' | rev
