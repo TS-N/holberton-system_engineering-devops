@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Read and cut for a file
+while read i
+do
+	echo "${i}" | cut -f1,3,6 -d ':'
+done < /etc/passwd

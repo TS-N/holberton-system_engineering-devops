@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Displays the content of the file /etc/passwd, using the while loop + IFS
+
