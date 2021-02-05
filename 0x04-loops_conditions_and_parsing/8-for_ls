@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Formated ls
-for e in `ls .`; do
-	echo $e | cut -d '-' -f2
+for e in *; do
+	echo "$e" | cut -d '-' -f2
 done
