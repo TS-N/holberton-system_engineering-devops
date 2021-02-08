@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+#manages the manage_my_process script
+file="/var/run/my_process.pid"
+strt(){
+	./manage_my_process &
+	echo "$!" > "$file"
+}
+stp(){
+	kill "$(cat "$file")"
+	rm "$file"
+}
+rstrt(){
+	stp
+	strt
+}
+if [[ $# -ne 1 ]]
+then
+	echo "Usage: manage_my_process {start|stop|restart}"
+else
+	case $1 in
+	start)
+		strt
+		echo "manage_my_process started"
+		;;
+	stop)
+		stp
+		echo "manage_my_process stopped"
+		;;
+	restart)
+		rstrt
+		echo "manage_my_process restarted"
+		;;
+	esac
+fi

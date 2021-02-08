@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#a bash script dealing with signals
+file="/var/run/holbertonscript.pid"
+del_kill()
+{
+	if [[ -e "$file" ]]
+	then
+		rm "$file"
+	fi
+	exit
+}
+term(){
+	echo "I hate the kill command"
+	del_kill
+}
+echo $$ > "$file"
+while true; do
+	echo "To infinity and beyond"
+	trap term SIGTERM
+	trap 'echo "Y U no love me?!"' SIGINT
+	trap del_kill SIGQUIT
+	sleep 2
+done

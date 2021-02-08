@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#same as previous with pgrep
+pgrep -l bash
