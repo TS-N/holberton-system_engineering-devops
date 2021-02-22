@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Configures an Ubuntu server such as: localhost resolves to 127.0.0.2, facebook.com resolves to 8.8.8.8.
+echo "127.0.0.2 localhost" >> ~/hosts.new
+echo "8.8.8.8 facebook.com" >> ~/hosts.new
+cat /etc/hosts >> ~/hosts.new
+cp -f ~/hosts.new /etc/hosts
+rm ~/hosts.new
