@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Transfert a file from localhost to server
+
 if [[ $# -gt 3 ]]
 then
   scp -o StrictHostKeyChecking=no -i "$4" "$1"  "$3@$2":~/
