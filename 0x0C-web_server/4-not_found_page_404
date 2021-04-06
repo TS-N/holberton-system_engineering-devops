@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Install and configure front page of my server
+
+apt-get -y install nginx
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+new_string="server_name _;\n\trewrite \/redirect_me \/ permanent;\n\terror_page 404 /404.html"
+sed -i "s/server_name _;/$new_string/" /etc/nginx/sites-available/default
+sudo service nginx restart
