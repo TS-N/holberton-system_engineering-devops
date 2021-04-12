@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+apt-get install --no-install-recommends software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-1.6
+apt-get -y install haproxy=1.6.\*
+echo "\nbackend web-backend\n\tbalance roundrobin\n\tserver 2501-web-1 35.185.49.71:80 check\n\tserver 2501-web-2 35.229.76.183:80 check\n\nfrontend http\n\tbind *:80\n\tmode http\n\tdefault_backend web-backend" >> /etc/haproxy/haproxy.cfg
