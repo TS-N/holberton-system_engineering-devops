@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Install and configure front page of my server
+
+apt-get -y install nginx
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+new_string="location \/ {\n\t\tadd_header X-Served-By $(hostname);"
+sed -i "s/location \/ {/$new_string/" /etc/nginx/sites-available/default
+sudo service nginx restart
