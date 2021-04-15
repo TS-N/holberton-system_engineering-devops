@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 # Debug a container to make 'curl 0:80' work
-new_string="listen 80 default_server;/listen [::]:80 default_server ipv6only=on;/"
-sed -i "s/listen 8080 default_server;/listen [::]:8080 default_server ipv6only=on;/" /etc/nginx/sites-enabled/default
-sudo service nginx restart 
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
