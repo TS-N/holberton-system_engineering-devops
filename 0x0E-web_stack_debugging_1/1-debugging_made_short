@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Debug a container to make 'curl 0:80' work
-ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-service nginx restart
-sed -i 's/pid \/run\/nginx.pid;/pid \/run\/fake.pid;/' /etc/nginx/nginx.conf
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
+sudo sed -i 's/pid \/run\/nginx.pid/pid \/run\/fake.pid/' /etc/nginx/nginx.conf
