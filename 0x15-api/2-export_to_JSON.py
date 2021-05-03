@@ -22,9 +22,9 @@ def get_data(id):
     subdict = {}
     task_list = []
     for elem in todo_json:
-        subdict['task'] = elem.get('title')
-        subdict['completed'] = elem.get('completed')
-        subdict['username'] = username
+        subdict = {'task': elem.get('title'),
+                   'completed': elem.get('completed'),
+                   'username': username}
         task_list.append(subdict)
     dic[user_id] = task_list
     with open('{}.json'.format(user_id), 'w') as jsonfile:
@@ -32,5 +32,4 @@ def get_data(id):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        get_data(sys.argv[1])
+    get_data(sys.argv[1])
