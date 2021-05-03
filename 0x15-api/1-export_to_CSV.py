@@ -3,9 +3,9 @@
 returns information about his/her TODO list progress
 and  export data in the CSV format
 """
+import csv
 import requests
 import sys
-import csv
 
 
 def get_data(id):
