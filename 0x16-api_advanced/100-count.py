@@ -32,6 +32,7 @@ def count_words(subreddit, word_list, result={}, before=None):
         if after is not None:
             count_words(subreddit, word_list, result, after)
         else:
-                for k, v in result.items():
-                    if v['count'] != 0:
-                        print('{}: {}'.format(k, v['count'] * v['multiplier']))
+                for k in sorted(result, key=result.get('count')):
+                    if result[k]['count'] != 0:
+                        nb = result[k]['count'] * result[k]['multiplier']
+                        print('{}: {}'.format(k, nb))
