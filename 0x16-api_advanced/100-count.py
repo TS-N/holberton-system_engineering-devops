@@ -16,23 +16,21 @@ def count_words(subreddit, word_list, result={}, before=None):
     if result == {}:
         for word in word_list:
             word = word.lower()
-            if word in result:
-                result[word]['multiplier'] += 1
-            else:
-                result[word] = {'count': 0, 'multiplier': 1}
+            result[word] = 0
 
     if r.status_code == 200:
         after = r.json().get('data').get('after')
         for e in r.json().get('data').get('children'):
             buf = e.get('data').get('title').lower().split()
-            for k in result.keys():
-                if (buf.count(k) > 0):
-                    result[k]['count'] = result[k]['count'] + buf.count(k)
+            for w in word_list:
+                w = w.lower()
+                if (buf.count(w) > 0):
+                    result[w] += buf.count(w)
 
         if after is not None:
             count_words(subreddit, word_list, result, after)
         else:
-                for k in sorted(result, key=result.get('count')):
-                    if result[k]['count'] != 0:
-                        nb = result[k]['count'] * result[k]['multiplier']
-                        print('{}: {}'.format(k, nb))
+                s = sorted(result.items(), key=lambda x: x[1], reverse=True)
+                for k in s:
+                    if k[1] != 0:
+                        print('{}: {}'.format(k[0], k[1]))
