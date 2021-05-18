@@ -19,7 +19,5 @@ def recurse(subreddit, hot_list=[], before=None):
         if after is not None:
             return recurse(subreddit, hot_list, after)
         else:
-            print(hot_list)
             return hot_list
-    print(r.status_code)
     return None
